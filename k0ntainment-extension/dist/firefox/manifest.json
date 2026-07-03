@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "K0ntmination Scanner",
+  "version": "0.2.0",
+  "description": "Adds a button on GitHub and GitLab repository pages to run a lightweight malware-risk heuristic scan and compute a K0ntamination Score.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://github.com/*",
+    "https://gitlab.com/*",
+    "https://api.github.com/*",
+    "https://raw.githubusercontent.com/*",
+    "https://gitlab.com/api/v4/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*", "https://gitlab.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "K0ntmination Scanner"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "k0ntmination-scanner@example.local",
+      "strict_min_version": "109.0"
+    }
+  }
+}

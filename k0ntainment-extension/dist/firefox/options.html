@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>K0ntmination Scanner Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header>
+        <h1>K0ntmination Scanner Settings</h1>
+        <p>Store API tokens locally to reduce rate-limit failures during scanning.</p>
+      </header>
+
+      <section class="card">
+        <h2>GitHub Token</h2>
+        <p class="hint">Recommended scope: public repo read-only access.</p>
+        <label for="githubToken">Personal Access Token</label>
+        <input id="githubToken" type="password" autocomplete="off" placeholder="ghp_..." />
+      </section>
+
+      <section class="card">
+        <h2>GitLab Token</h2>
+        <p class="hint">Recommended scope: read_api.</p>
+        <label for="gitlabToken">Personal Access Token</label>
+        <input id="gitlabToken" type="password" autocomplete="off" placeholder="glpat-..." />
+      </section>
+
+      <section class="card split">
+        <div>
+          <h2>Safety Notice</h2>
+          <p>This scanner is an indicator only. Always perform a manual review before trusting or running code.</p>
+        </div>
+        <div class="actions">
+          <button id="saveBtn" type="button">Save Tokens</button>
+          <button id="clearBtn" type="button" class="secondary">Clear Tokens</button>
+        </div>
+      </section>
+
+      <p id="status" aria-live="polite"></p>
+    </main>
+
+    <script src="options.js"></script>
+  </body>
+</html>

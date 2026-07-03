@@ -1,0 +1,15 @@
+{
+  "name": "k0ntmination-scanner-extension",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Minimal browser extension packaging scripts for K0ntmination Scanner",
+  "scripts": {
+    "clean": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"if (Test-Path dist) { Remove-Item -Recurse -Force dist }\"",
+    "build:dist": "npm run clean && powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-dist.ps1",
+    "zip:chrome": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Compress-Archive -Path dist\\chrome\\* -DestinationPath dist\\k0ntmination-chrome-unsigned.zip -Force\"",
+    "zip:firefox": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Compress-Archive -Path dist\\firefox\\* -DestinationPath dist\\k0ntmination-firefox-unsigned.zip -Force\"",
+    "package:chrome": "npm run build:dist && npm run zip:chrome",
+    "package:firefox": "npm run build:dist && npm run zip:firefox",
+    "package:all": "npm run build:dist && npm run zip:chrome && npm run zip:firefox"
+  }
+}
